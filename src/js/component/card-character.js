@@ -20,7 +20,7 @@ export function Character({ name, eye_color, gender, hair_color }) {
 					<b>Hair Color: </b>
 					{hair_color}
 				</p>
-				<div className="card-footer">
+				<div className="card-footer d-flex justify-content-between">
 					<Link className="btn btn-outline-primary" to="/details">
 						Learn More
 					</Link>
