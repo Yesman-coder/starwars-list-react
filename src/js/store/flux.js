@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people: [],
 			planets: []
 		},
+
 		actions: {
 			getPeople: async () => {
 				const response = await fetch(`${baseUrl}people/`);
@@ -17,6 +18,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(`${baseUrl}planets/`);
 				const data = await response.json();
 				setStore({ planets: data.results });
+			},
+
+			addFavorite: async itemToAdd => {
+				const newList = store.people.filter((newItem, index) => {
+					return newItem == itemToAdd;
+				});
+				setListItems(newList);
+				console.log(newList);
 			}
 		}
 	};

@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export function Character({ name, eye_color, gender, hair_color }) {
 	return (
-		<div className="card" style={{ minHeight: "18rem", minWidth: "18rem" }}>
+		<div style={{ width: "18rem" }} className="m-4 card card">
 			<img className="card-img-top" src="https://picsum.photos/400/200" alt="Card image cap" />
 			<div className="card-body">
 				<h5 className="card-title font-italic">{name}</h5>
