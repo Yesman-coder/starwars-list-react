@@ -27,9 +27,12 @@ export function Character({ index, name, eye_color, gender, hair_color }) {
 				</p>
 				<div className="card-footer d-flex justify-content-between">
 					<Link
-						onClick={(() => history.push(`/${index}`), console.log(index))}
+						// onClick={() => {
+						// 	history.push(`/details/${index}`);
+						// 	console.log(index);
+						// }}
 						className="btn btn-outline-primary"
-						to="/details">
+						to={`/details/${index}`}>
 						Learn More
 					</Link>
 					<button onClick={e => actions.addFavorites(e, `${name}`)} className="btn btn-outline-warning">
