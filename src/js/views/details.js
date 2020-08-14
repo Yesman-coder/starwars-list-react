@@ -1,27 +1,31 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { Details } from "../component/card-details";
 
-import "../../styles/demo.scss";
+export function DetailsView() {
+	const { store } = useContext(Context);
+	const { id } = useParams();
 
-export const Details = () => {
-	const { store, actions } = useContext(Context);
+	// console.log(id);
 
 	return (
-		<div className="container-fluid">
-			<div className="jumbotron d-flex row">
-				<img className="" src="https://picsum.photos/600/400" alt="Item Picture" />
-				<h1 className="display-4">Hello, world!</h1>
-				<p className="lead">
-					This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-					featured content or information.
-				</p>
-				<hr className="my-4" />
-				<p>
-					It uses utility classes for typography and spacing to space content out within the larger container.
-				</p>
-			</div>
-		</div>
+		<>
+			{store.people.map((newChar, index) => {
+				if (index === parseInt(id)) {
+					return (
+						<Details
+							key={index}
+							name={newChar.name}
+							eye_color={newChar.eye_color}
+							skin_color={newChar.skin_color}
+							birth_year={newChar.birth_year}
+							height={newChar.height}
+							gender={newChar.gender}
+						/>
+					);
+				}
+			})}
+		</>
 	);
-};
+}

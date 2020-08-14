@@ -5,8 +5,6 @@ import { Context } from "../store/appContext";
 import "../../styles/home.scss";
 
 export function Home() {
-	// const [people, setPeople] = useState([]);
-	// const [planets, setPlanets] = useState([]);
 	const { store, actions } = useContext(Context);
 
 	useEffect(() => {
@@ -16,13 +14,14 @@ export function Home() {
 
 	return (
 		<>
-			<h3 className="text-danger p-5">Characters</h3>
+			<h3 className="text-danger p-2">Characters</h3>
 			<div className="">
 				<div className="card-group-scroll card-group">
 					{store.people.map((newChar, index) => {
 						return (
 							<Character
 								key={index}
+								index={index}
 								name={newChar.name}
 								eye_color={newChar.eye_color}
 								hair_color={newChar.hair_color}
@@ -33,7 +32,7 @@ export function Home() {
 				</div>
 			</div>
 
-			<h3 className="text-danger p-5">Planets</h3>
+			<h3 className="text-danger p-2">Planets</h3>
 			<div className="">
 				<div className="card-group-scroll card-group">
 					{store.planets.map((newPlanet, index) => {

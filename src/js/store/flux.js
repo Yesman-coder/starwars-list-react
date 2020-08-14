@@ -4,7 +4,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			people: [],
-			planets: []
+			planets: [],
+			favorites: [],
+			newFavorite: {
+				name: ""
+			}
 		},
 
 		actions: {
@@ -20,12 +24,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ planets: data.results });
 			},
 
-			addFavorite: async itemToAdd => {
-				const newList = store.people.filter((newItem, index) => {
-					return newItem == itemToAdd;
+			addFavorites: async (e, name) => {
+				let actions = getActions();
+				setStore({
+					newFavorite: {
+						name: name
+					}
 				});
-				setListItems(newList);
-				console.log(newList);
+				await actions.addFavorite();
+				await setStore({
+					newFavorite: {
+						name: ""
+					}
+				});
+			},
+
+			addFavorite: () => {
+				let store = getStore();
+				setStore({
+					favorites: [...store.favorites, store.newFavorite]
+				});
+			},
+
+			deleteFavorite: (e, itemToDelete) => {
+				let store = getStore();
+				let newList = store.favorites.filter((newItem, index) => {
+					return index != itemToDelete;
+				});
+				setStore({
+					favorites: [...newList]
+				});
 			}
 		}
 	};
