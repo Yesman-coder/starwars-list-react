@@ -14,7 +14,7 @@ export function Home() {
 
 	return (
 		<>
-			<h3 className="text-danger p-2">Characters</h3>
+			<h2 className="text-danger pt-5 pl-5">Characters</h2>
 			<div className="">
 				<div className="card-group-scroll card-group">
 					{store.people.map((newChar, index) => {
@@ -32,13 +32,14 @@ export function Home() {
 				</div>
 			</div>
 
-			<h3 className="text-danger p-2">Planets</h3>
+			<h2 className="text-danger pt-5 pl-5">Planets</h2>
 			<div className="">
 				<div className="card-group-scroll card-group">
 					{store.planets.map((newPlanet, index) => {
 						return (
 							<Planet
 								key={index}
+								index={index}
 								name={newPlanet.name}
 								terrain={newPlanet.terrain}
 								climate={newPlanet.climate}
